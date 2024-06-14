@@ -12,6 +12,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from models import db, User, Todo
 from config import config
+from datetime import datetime
 
 app = Flask(__name__)
 CORS(app)  # Apply CORS to your Flask app
@@ -169,12 +170,12 @@ def get_todos():
                     'id': todo.id,
                     'title': todo.title,
                     'description': todo.description,
-                    'completed': todo.completed
+                    'completed': todo.completed,
+                    'deadline': todo.deadline.isoformat() if todo.deadline else None
                 })
         return jsonify({'todos': todos_list}), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-
 
 @app.route('/todos', methods=['POST'])
 @jwt_required()
@@ -185,11 +186,18 @@ def create_todo():
         title = data.get('title')
         description = data.get('description')
         completed = data.get('completed', False)  # Default completed to False if not provided
+        deadline = data.get('deadline')
 
         if not title:
             return jsonify({'error': 'Title is required'}), 400
 
-        new_todo = Todo(title=title, description=description, user_id=current_user_id, completed=completed)
+        new_todo = Todo(
+            title=title,
+            description=description,
+            user_id=current_user_id,
+            completed=completed,
+            deadline=datetime.fromisoformat(deadline) if deadline else None
+        )
         db.session.add(new_todo)
         db.session.commit()
 
@@ -197,12 +205,12 @@ def create_todo():
             'id': new_todo.id,
             'title': new_todo.title,
             'description': new_todo.description,
-            'completed': new_todo.completed
+            'completed': new_todo.completed,
+            'deadline': new_todo.deadline.isoformat() if new_todo.deadline else None
         }}), 201
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-
 
 @app.route('/todos/<int:todo_id>', methods=['PUT'])
 @jwt_required()
@@ -218,6 +226,7 @@ def update_todo(todo_id):
         title = data.get('title')
         description = data.get('description')
         completed = data.get('completed')
+        deadline = data.get('deadline')
 
         if title:
             todo.title = title
@@ -225,6 +234,8 @@ def update_todo(todo_id):
             todo.description = description
         if completed is not None:
             todo.completed = completed
+        if deadline:
+            todo.deadline = datetime.fromisoformat(deadline)
 
         db.session.commit()
 
@@ -232,12 +243,12 @@ def update_todo(todo_id):
             'id': todo.id,
             'title': todo.title,
             'description': todo.description,
-            'completed': todo.completed
+            'completed': todo.completed,
+            'deadline': todo.deadline.isoformat() if todo.deadline else None
         }}), 200
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-
 
 @app.route('/todos/<int:todo_id>', methods=['DELETE'])
 @jwt_required()
@@ -257,7 +268,6 @@ def delete_todo(todo_id):
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-
 @app.route('/completed-todos', methods=['GET'])
 @jwt_required()
 def get_completed_todos():
@@ -268,7 +278,8 @@ def get_completed_todos():
             'id': todo.id,
             'title': todo.title,
             'description': todo.description,
-            'completed': todo.completed
+            'completed': todo.completed,
+            'deadline': todo.deadline.isoformat() if todo.deadline else None
         } for todo in completed_todos]
 
         return jsonify({'completed_todos': completed_todos_list}), 200

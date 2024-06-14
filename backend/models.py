@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
+from datetime import datetime
 
 db = SQLAlchemy()
 bcrypt = Bcrypt()
@@ -21,7 +22,9 @@ class Todo(db.Model):
     title = db.Column(db.String(100), nullable=False)
     description = db.Column(db.Text, nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    completed = db.Column(db.Boolean, default=False)  # Add completed attribute
+    completed = db.Column(db.Boolean, default=False)
+    deadline = db.Column(db.DateTime, nullable=True)
+
 
     def __repr__(self):
         return f'<Todo {self.title}>'
