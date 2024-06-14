@@ -26,3 +26,8 @@ The Project Management App is a web-based application designed to simplify proje
 - Backend: Java (with Spring Boot)
 - Frontend: HTML, CSS, JavaScript
 - Database: MongoDB
+
+![Screenshot 2024-06-14 100258](https://github.com/fayazap/Todo/assets/84265684/552563fd-60d6-4938-9c79-a2cd0618f3bd)
+![Screenshot 2024-06-14 100245](https://github.com/fayazap/Todo/assets/84265684/d11fde83-e73c-48f9-9c31-e945b3a6f210)
+![Screenshot 2024-06-14 100234](https://github.com/fayazap/Todo/assets/84265684/8070094b-e94f-467b-a485-67ee1fb0eee1)
+
