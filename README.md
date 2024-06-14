@@ -1,4 +1,4 @@
-# Project Management Application
+![Screenshot 2024-06-14 100234](https://github.com/fayazap/Todo/assets/84265684/ebaa8cc5-9bf2-4688-80ba-c9c1535040f4)# Project Management Application
 
 The Project Management App is a web-based application designed to simplify project management tasks and facilitate collaboration among team members. With features like project creation, todo management, and export summary as Gist, this app provides a comprehensive solution for managing projects efficiently.
 
@@ -27,7 +27,9 @@ The Project Management App is a web-based application designed to simplify proje
 - Frontend: HTML, CSS, JavaScript
 - Database: MongoDB
 
-![Screenshot 2024-06-14 100258](https://github.com/fayazap/Todo/assets/84265684/552563fd-60d6-4938-9c79-a2cd0618f3bd)
-![Screenshot 2024-06-14 100245](https://github.com/fayazap/Todo/assets/84265684/d11fde83-e73c-48f9-9c31-e945b3a6f210)
-![Screenshot 2024-06-14 100234](https://github.com/fayazap/Todo/assets/84265684/8070094b-e94f-467b-a485-67ee1fb0eee1)
+
+![Screenshot 2024-06-14 141147](https://github.com/fayazap/Todo/assets/84265684/4a7597d0-b3a1-4576-8c58-8133c2b76add)
+![Screenshot 2024-06-14 100245](https://github.com/fayazap/Todo/assets/84265684/85b6434a-ece5-4fa4-9d1b-94f697734be7)
+![Screenshot 2024-06-14 100234](https://github.com/fayazap/Todo/assets/84265684/6d4a0ea6-dc7d-4f56-ab42-5d9c6469e39c)
+
 
