@@ -1,4 +1,4 @@
-![Screenshot 2024-06-14 100234](https://github.com/fayazap/Todo/assets/84265684/ebaa8cc5-9bf2-4688-80ba-c9c1535040f4)# Project Management Application
+# Project Management Application
 
 The Project Management App is a web-based application designed to simplify project management tasks and facilitate collaboration among team members. With features like project creation, todo management, and export summary as Gist, this app provides a comprehensive solution for managing projects efficiently.
 
